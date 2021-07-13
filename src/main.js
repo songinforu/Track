@@ -1,4 +1,6 @@
+//入口文件
 import Vue from 'vue'
+//导入App根组件
 import App from './App.vue'
 import router from './router'
 // import './style/iconfont/iconfont.css'
