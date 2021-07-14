@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="analytics">
     <!-- 头部导航    开始-->
     <div class="box-top">
       <div class="module-left">
@@ -146,75 +146,8 @@
       </div>
       <!-- 左导航栏    结束 -->
       <div class="motif-right">
-        <div class="chart-box">
-          <!-- 数据图表模块头部   开始 -->
-          <div class="chart-box-head">
-            <h2>OVERVIEW</h2>
-            <div class="chart-box-head-right">
-              <input type="date">
-              <span></span>
-            </div>
-          </div>
-          <!-- 数据图表模块身体   开始 -->
-          <div class="chart-box-body">
-            <div class="chart-lump">
-              <span class="iconfont icon-study"></span>
-              <h1>22</h1>
-              <p>TOTAL SESSIONS</p>
-              <div></div>
-            </div>
-            <div class="chart-lump">
-              <span class="iconfont icon-certificates"></span>
-              <h1>1</h1>
-              <p>TOTAL USERS</p>
-              <div></div>
-            </div>
-            <div class="chart-lump">
-              <span class="iconfont icon-expire"></span>
-              <h1>1</h1>
-              <p>NEW　USERS</p>
-              <div></div>
-            </div>
-            <div class="chart-lump chart-specil-lump">
-              <span class="iconfont icon-train"></span>
-              <h1>23.8m</h1>
-              <p>TIME SPENT</p>
-              <div></div>
-            </div>
-            <div class="chart-lump">
-              <span class="iconfont icon-assessment"></span>
-              <h1>1.1m</h1>
-              <p>AVG.SESSION DURATION</p>
-              <div></div>
-            </div>
-            <div class="chart-lump last-lump">
-              <span class="iconfont icon-ic_access_alarm_48px"></span>
-              <h1>240</h1>
-              <p>AVG.REQUESTS RECEIVED</p>
-              <div></div>
-            </div>
-          </div>
-          <!-- 数据图表模块脚部    开始 -->
-          <div class="chart-box-footer"></div>
-        </div>
-        <div class="sheet-box">
-          <div class="lump first-lump">
-            <h5>TOP PLATFORMS</h5>
-            <div class="sheet-chart"></div>
-          </div>
-          <div class="lump">
-            <h5>TOP DEVICES</h5>
-            <div class="sheet-chart"></div>
-          </div>
-          <div class="lump">
-            <h5>TOP CARRIERS</h5>
-            <div class="sheet-chart"></div>
-          </div>
-          <div class="lump">
-            <h5>TOP USERS</h5>
-            <div class="sheet-chart"></div>
-          </div>
-        </div>
+        <div class="chart-box"></div>
+        <div class="sheet-box"></div>
       </div>
     </div>
     <!-- 主题部分    结束 -->
@@ -224,7 +157,7 @@
 
 <style lang="scss" scoped>
 // scoped 防止类名重复 只在当前文件下起作用
-  .home{
+  .analytics{
     height: 100%;
     .box-top{
       display: flex;
@@ -347,106 +280,13 @@
       }
       .motif-right{
         width: calc(100% - 250px);
-        // background: chocolate;
-        display: flex;
-        flex-direction: column;
-        .chart-box{
-          margin-top: 20px;
-          margin-left: 20px;
-          margin-right: 5px;
-          height: 650px;
-          border: 1px solid #d2d2d2;
-          border-radius: 3px;
-          .chart-box-head{
-            height: 70px;
-            background: #ececec;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            h2{
-              font-size: 18px;
-              margin-left: 10px;
-            }
-            .chart-box-head-right{
-              width: 400px;
-              height: 50px;
-              background: chartreuse;
-            }
-          }
-          .chart-box-body{
-            //为了兼容性一般都写两条
-            display:-webkit-flex;
-            display: flex;
-            .chart-lump{
-              height: 200px;
-              background: #f9f9f9;
-              flex: 1;
-              border-right: 1px solid #7d7d7d;
-              border-bottom: 1px solid #7d7d7d;
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-              align-items: center;
-              span{
-                font-size: 28px;
-              }
-              h1{
-                margin-top: 5px;
-                font-family: 宋体;
-              }
-              p{
-                margin: 5px;
-                font-size: 12px;
-              }
-              div{
-                width: 150px;
-                height: 50px;
-                background: chartreuse;
-              }
-            }
-            .chart-specil-lump{
-              background: white;
-              border-bottom: none;
-          }
-            .last-lump{
-              border-right: none;
-            }
-          }
-        }
-        .sheet-box{
-          margin-top: 20px;
-          margin-left: 20px;
-          margin-right: 5px;
-          height: calc(100% - 692px);
-          border: 1px solid #d2d2d2;
-          border-bottom: none;
-          display: flex;
-          .lump{
-            flex: 1;
-            border-left: 1px solid #7d7d7d;
-            background: chartreuse;
-            display: flex;
-            flex-direction: column;
-            h5{
-              margin: 30px 0px 30px 20px;
-              font-size: 18px;
-            }
-            .sheet-chart{
-              width: 290px;
-              height: 130px;
-              margin: 0 auto;
-              background: blueviolet;
-            }
-          }
-          .first-lump{
-            border-left: none;
-          }
-        }
+        background: chocolate;
       }
       
     }
   }
 </style>
+
 
 <script>
   export default {
