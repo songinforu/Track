@@ -381,8 +381,8 @@
               height: 200px;
               background: #f9f9f9;
               flex: 1;
-              border-right: 1px solid #7d7d7d;
-              border-bottom: 1px solid #7d7d7d;
+              border-right: 1px solid #d2d2d2;
+              border-bottom: 1px solid #d2d2d2;
               display: flex;
               flex-direction: column;
               justify-content: center;
@@ -432,7 +432,7 @@
               font-size: 18px;
             }
             .sheet-chart{
-              width: 290px;
+              width: 90%;
               height: 130px;
               margin: 0 auto;
               background: blueviolet;

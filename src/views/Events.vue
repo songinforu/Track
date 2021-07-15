@@ -146,8 +146,59 @@
       </div>
       <!-- 左导航栏    结束 -->
       <div class="motif-right">
-        <div class="chart-box"></div>
-        <div class="sheet-box"></div>
+        <div class="motif-right-specil">
+          <div class="event-one">
+            <h3>EVENTS</h3>
+            <span class="iconfont icon-24"></span>
+          </div>
+          <div class="event-two">
+            <span class="iconfont icon-icon_fabu"></span>
+            <p>Compare</p>
+          </div>
+          <div class="event-three">
+            <span class="iconfont icon-sousuo"></span>
+          </div>
+          <div class="event-four">
+            <p>linkClick</p>
+          </div>
+        </div>
+        <div class="motif-right-master">
+          <div class="chart-box">
+            <!-- 数据图表模块头部   开始 -->
+            <div class="chart-box-head">
+              <h2>LINKCLICK</h2>
+              <div class="chart-box-head-right">
+                <input type="date">
+                <span></span>
+              </div>
+            </div>
+            <!-- 数据图表模块身体   开始 -->
+            <div class="chart-box-body">
+
+
+            </div>
+            <!-- 数据图表模块脚部    开始 -->
+            <div class="chart-box-footer"></div>
+          </div>
+          <div class="sheet-box">
+            <el-table
+              :data="tableData"
+              style="width: 100%"
+              :default-sort = "{prop: 'date', order: 'descending'}"
+              >
+              <el-table-column
+                prop="date"
+                label="SEGMENTATION"
+                sortable>
+              </el-table-column>
+              <el-table-column
+                prop="name"
+                label="COUNT"
+                sortable>
+              </el-table-column>
+            </el-table>            
+          </div>
+        </div>
       </div>
     </div>
     <!-- 主题部分    结束 -->
@@ -280,20 +331,160 @@
       }
       .motif-right{
         width: calc(100% - 250px);
-        background: chocolate;
+        display: flex;
+        .motif-right-specil{
+          width: 300px;
+          height: 220px;
+          margin: 20px 0px 20px 20px;
+          border: 1px solid #d2d2d2;
+          border-radius: 5px;
+          .event-one{
+            display: flex;
+            height: 70px;
+            background: #d2d2d2;
+            align-items: center;
+            justify-content: space-around;
+            span{
+              font-size: 25px;
+            }
+          }
+          .event-two{
+            height: 50px;
+            background: #d9d9d9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            span{
+              font-size: 20px;
+              margin-right: 10px;
+            }
+          }
+          .event-three{
+            height: 50px;
+            background: #f9f9f9;
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            span{
+              font-size: 25px;
+              margin-right: 20px;
+            }
+          }
+          .event-four{
+            height: 50px;
+            background: #ececec;
+            font-size: 16px;
+            line-height: 50px;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            p{
+              margin-left: 20px;
+            }
+          }
+        }
+        .motif-right-master{
+          width: calc(100% - 320px);
+          height: 100%;
+          // background: chocolate;
+          display: flex;
+          flex-direction: column;
+          .chart-box{
+            margin: 20px;
+            height: 650px;
+            border: 1px solid #d2d2d2;
+            border-radius: 3px;
+            .chart-box-head{
+              height: 70px;
+              background: #ececec;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              h2{
+                font-size: 18px;
+                margin-left: 10px;
+              }
+              .chart-box-head-right{
+                width: 400px;
+                height: 50px;
+                background: chartreuse;
+              }
+            }
+            .chart-box-body{
+              //为了兼容性一般都写两条
+              display:-webkit-flex;
+              display: flex;
+              .chart-lump{
+                height: 200px;
+                background: #f9f9f9;
+                flex: 1;
+                border-right: 1px solid #d2d2d2;
+                border-bottom: 1px solid #d2d2d2;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                span{
+                  font-size: 28px;
+                }
+                h1{
+                  margin-top: 5px;
+                  font-family: 宋体;
+                }
+                p{
+                  margin: 5px;
+                  font-size: 12px;
+                }
+                div{
+                  width: 150px;
+                  height: 50px;
+                  background: chartreuse;
+                }
+              }
+              .chart-specil-lump{
+                background: white;
+                border-bottom: none;
+            }
+              .last-lump{
+                border-right: none;
+              }
+            }
+          }
+          .sheet-box{
+            margin: 10px 20px 0px 20px;
+            height: calc(100% - 692px);
+            border: 1px solid #d2d2d2;
+            border-bottom: none;
+          }
+        }  
       }
-      
     }
   }
 </style>
-
 
 <script>
   export default {
     data() {
       return {
-        value: true
+        value: true,
+        tableData: [{
+          date: 'link1',
+          name: '1',
+        }, {
+          date: 'link2',
+          name: '2',
+        }, {
+          date: 'link3',
+          name: '3',
+        }, {
+          date: 'link4',
+          name: '4',
+        }]
+      }
+    },
+    methods: {
+      formatter(row, column) {
+        return row.address;
       }
     }
-  };
+  }
 </script>
