@@ -1,15 +1,7 @@
 <template>
   <div class="events">
-    <!-- 头部导航    开始-->
-    <TopNavigation/>
-    <!-- 头部导航    结束 -->
-
-
     <!-- 主体部分     开始 -->
     <div class="motif">
-      <!-- 左导航栏    开始-->
-        <LeftNavigation/>
-      <!-- 左导航栏    结束 -->
       <div class="motif-right">
         <div class="motif-right-specil">
           <div class="event-one">
@@ -47,12 +39,7 @@
               </div>
             </div>
             <!-- 数据图表模块身体   开始 -->
-            <div class="chart-box-body">
-
-
-            </div>
-            <!-- 数据图表模块脚部    开始 -->
-            <div class="chart-box-footer"></div>
+            <div class="chart-box-body" ref="chart_main3"></div>
           </div>
           <div class="sheet-box">
             <el-table
@@ -82,13 +69,13 @@
 <style lang="scss" scoped>
 // scoped 防止类名重复 只在当前文件下起作用
   .events{
-    height: 100%;
+    width: 100%;
     .motif{
-      height: calc(100% - 62px);
-      display: flex;
+      height: 100%;
       .motif-right{
-        width: calc(100% - 250px);
+        width: 100%;
         display: flex;
+        // background: chocolate;
         .motif-right-specil{
           width: 300px;
           margin: 20px 0px auto 20px;
@@ -145,7 +132,7 @@
           }
         }
         .motif-right-master{
-          width: calc(100% - 320px);
+          width: calc(100% - 330px);
           height: 100%;
           // background: chocolate;
           display: flex;
@@ -170,43 +157,8 @@
               }
             }
             .chart-box-body{
-              //为了兼容性一般都写两条
-              display:-webkit-flex;
-              display: flex;
-              .chart-lump{
-                height: 200px;
-                background: #f9f9f9;
-                flex: 1;
-                border-right: 1px solid #d2d2d2;
-                border-bottom: 1px solid #d2d2d2;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                span{
-                  font-size: 28px;
-                }
-                h1{
-                  margin-top: 5px;
-                  font-family: 宋体;
-                }
-                p{
-                  margin: 5px;
-                  font-size: 12px;
-                }
-                div{
-                  width: 150px;
-                  height: 50px;
-                  background: chartreuse;
-                }
-              }
-              .chart-specil-lump{
-                background: white;
-                border-bottom: none;
-            }
-              .last-lump{
-                border-right: none;
-              }
+              margin-top: 100px;
+              height: 380px;
             }
           }
           .sheet-box{
@@ -222,13 +174,7 @@
 </style>
 
 <script>
-import TopNavigation from "@/components/TopNavigation";
-import LeftNavigation from "@/components/LeftNavigation"
   export default {
-    components: {
-      TopNavigation,
-      LeftNavigation
-    },
     data() {
       return {
         ifVisibile: false,
@@ -271,10 +217,55 @@ import LeftNavigation from "@/components/LeftNavigation"
         input4: ''
       }
     },
+    //生命周期挂载
+    mounted(){
+      this.initEcharts()
+    },
     methods: {
       formatter(row, column) {
         return row.address;
       },
+      initEcharts(){
+        const echartsThreeBox = this.$refs.chart_main3;
+        const myChat = this.$echarts.init(echartsThreeBox);
+        myChat.setOption({
+          color: ['#3398DB'],
+          tooltip: {
+              trigger: 'axis',
+              axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                  type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+              }
+          },
+          grid: {
+              left: '3%',
+              right: '4%',
+              bottom: '3%',
+              containLabel: true
+          },
+          xAxis: [
+              {
+                  type: 'category',
+                  data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                  axisTick: {
+                      alignWithLabel: true
+                  }
+              }
+          ],
+          yAxis: [
+              {
+                  type: 'value'
+              }
+          ],
+          series: [
+              {
+                  name: '直接访问',
+                  type: 'bar',
+                  barWidth: '60%',
+                  data: [10, 52, 200, 334, 390, 330, 220]
+              }
+          ]
+        })
+      }
     }
   };
 </script>

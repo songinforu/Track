@@ -1,11 +1,8 @@
 <template>
   <div class="home">
-    <!-- 上导航栏 -->
-    <TopNavigation />
     <!-- 主体部分     开始 -->
     <div class="motif">
       <!-- 左导航栏    开始-->
-      <LeftNavigation />
       <!-- 左导航栏    结束 -->
       <div class="motif-right">
         <div class="chart-box">
@@ -17,7 +14,8 @@
                 v-model="value3"
                 type="datetime"
                 placeholder="选择日期时间"
-                default-time="12:00:00">
+                default-time="12:00:00"
+              >
               </el-date-picker>
             </div>
           </div>
@@ -41,7 +39,7 @@
               <p>NEW　USERS</p>
               <!-- <div></div> -->
             </div>
-            <div class="chart-lump chart-specil-lump">
+            <div class="chart-lump">
               <span class="iconfont icon-train"></span>
               <h1>23.8m</h1>
               <p>TIME SPENT</p>
@@ -61,7 +59,7 @@
             </div>
           </div>
           <!-- 数据图表模块脚部    开始 -->
-          <div class="chart-box-footer" id="chart_main"></div>
+          <div class="chart-box-footer" ref="chart_main"></div>
         </div>
         <div class="sheet-box">
           <div class="lump first-lump">
@@ -129,7 +127,7 @@
         </div>
       </div>
     </div>
-    <!-- 主题部分    结束 -->
+    <!-- 主题部分   结束 -->
   </div>
 </template>
 
@@ -137,12 +135,11 @@
 <style lang="scss" scoped>
 // scoped 防止类名重复 只在当前文件下起作用
 .home {
-  height: 100%;
+  width: 100%;
   .motif {
-    height: calc(100% - 62px);
-    display: flex;
+    height: 100%;
     .motif-right {
-      width: calc(100% - 250px);
+      height: 100%;
       // background: chocolate;
       display: flex;
       flex-direction: column;
@@ -198,13 +195,12 @@
               background: chartreuse;
             }
           }
-          .chart-specil-lump {
-            background: white;
-            border-bottom: none;
-          }
           .last-lump {
             border-right: none;
           }
+        }
+        .chart-box-footer {
+          height: 380px;
         }
       }
       .sheet-box {
@@ -263,15 +259,7 @@
 </style>
 
 <script>
-//引入组件
-import TopNavigation from "@/components/TopNavigation"
-import LeftNavigation from "@/components/LeftNavigation"
 export default {
-  //注册组件
-  components:{
-    TopNavigation,
-    LeftNavigation
-  },
   data() {
     return {
       value: true,
@@ -303,6 +291,32 @@ export default {
       },
       value3: "",
     };
+  },
+  //生命周期 挂载后
+  mounted() {
+    this.initEcharts()
+  },
+  methods: {
+    //引入echarts
+    initEcharts() {
+      const echartsBox = this.$refs.chart_main;
+      const myChat = this.$echarts.init(echartsBox);
+      myChat.setOption({
+        xAxis: {
+          type: "category",
+          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            data: [150, 230, 224, 218, 135, 147, 260],
+            type: "line",
+          },
+        ],
+      });
+    },
   },
 };
 </script>

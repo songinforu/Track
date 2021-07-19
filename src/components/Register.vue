@@ -1,6 +1,23 @@
+
 <template>
-  <div id="page">
-  	<h1>注册页</h1>
-    <router-link to="/">返回首页</router-link>
+  <div >
+   <input type="button" value="clickme" v-on:click="greet()"/>
+    <div v-show="hide">点击按钮我就消失</div>
   </div>
 </template>
+ 
+<script>
+export default {
+  name: 'HelloWorld',
+  data () {
+    return {
+      hide : true
+    }
+  },
+  methods:{
+    greet: function () {
+     conso.log
+    }
+  }
+}
+</script>

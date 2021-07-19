@@ -13,6 +13,7 @@
       </div>
       <div class="module-right">
         <div class="module-right-left-w">
+          <!-- ：绑定属性  @绑定事件 -->
           <div class="module-right-left" @click="handlePageList()" :tabIndex="-1" @blur="ifVisibile = false">
             <span class="iconfont icon-a-ziyuan13" slot="left"></span>
             <h4>test1</h4>
@@ -33,7 +34,7 @@
           <!-- <router-link to="">
             <span class="iconfont icon-shezhi"></span>
           </router-link> -->
-          <router-link to="">
+          <router-link to="/login">
             <span class="iconfont icon-yaoqingzhuli"></span>
           </router-link>
           <router-link to="">
