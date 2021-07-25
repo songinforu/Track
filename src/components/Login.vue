@@ -24,7 +24,7 @@
                     <span class="form_span">or use your email account</span>
                     <input type="text" class="form_input" placeholder="Email">
                     <input type="text" class="form_input" placeholder="Password">
-                    <button class="form_button button submit">登录</button>
+                    <button class="form_button button submit" @click="handleSubmit" :loading="logining">登录</button>
                 </form>
             </div>
             <!-- 动态绑定 -->
@@ -60,7 +60,8 @@ export default {
             addSpecil2:false,
             num:"-60%",
             topNum:"60%",
-            nameNum: ""
+            nameNum: "",
+            logining: false
         }
     },
     methods:{
