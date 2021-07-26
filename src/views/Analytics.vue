@@ -6,13 +6,12 @@
         <div class="chart-box">
           <!-- 数据图表模块头部   开始 -->
           <div class="chart-box-head">
-            <h2>USERS</h2>
+            <h2>{{$t('m.USERS')}}</h2>
             <div class="chart-box-head-right">
               <el-date-picker
                 v-model="value3"
                 type="datetime"
-                placeholder="选择日期时间"
-                default-time="12:00:00">
+                :placeholder="$t('m.time')">
               </el-date-picker>
               <span></span>
             </div>
@@ -32,22 +31,22 @@
             >
             <el-table-column
               prop="date"
-              label="DATA"
+              :label="$t('m.data')"
               sortable>
             </el-table-column>
             <el-table-column
               prop="totalUsers"
-              label="TOTALUSERS"
+              :label="$t('m.totalusers')"
               sortable>
             </el-table-column>
             <el-table-column
               prop="newUsers"
-              label="NEWUSERS"
+              :label="$t('m.newusers')"
               sortable>
             </el-table-column>
             <el-table-column
               prop="returningUsers"
-              label="RETURNINGUSERS"
+              :label="$t('m.returning')"
               sortable>
             </el-table-column>
           </el-table>

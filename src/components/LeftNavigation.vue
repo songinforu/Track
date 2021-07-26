@@ -3,25 +3,25 @@
     <div class="motif-left">
       <!-- 第一块 -->
       <div class="black-box">
-        <p class="font-special">UNDERSTAND</p>
+        <p class="font-special">{{$t('m.menuitem')}}</p>
         <router-link to="/">
           <div>
             <span class="iconfont icon-calendar"></span>
-            <p>Home</p>
+            <p>{{ $t('m.home')}}</p>
             <span class="span-specil">></span>
           </div>
         </router-link>
         <router-link to="analytics">
           <div>
             <span class="iconfont icon-communicate"></span>
-            <p>Analytics</p>
+            <p>{{ $t('m.analytics')}}</p>
             <span class="span-specil">></span>
           </div>
         </router-link>
         <router-link to="events">
           <div>
             <span class="iconfont icon-business"></span>
-            <p>Events</p>
+            <p>{{ $t('m.events')}}</p>
             <span class="span-specil">></span>
           </div>
         </router-link>

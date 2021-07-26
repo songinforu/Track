@@ -8,13 +8,12 @@
         <div class="chart-box">
           <!-- 数据图表模块头部   开始 -->
           <div class="chart-box-head">
-            <h2>OVERVIEW</h2>
+            <h2>{{$t('m.overview')}}</h2>
             <div class="chart-box-head-right">
               <el-date-picker
                 v-model="value3"
                 type="datetime"
-                placeholder="选择日期时间"
-                default-time="12:00:00"
+                :placeholder="$t('m.time')"
               >
               </el-date-picker>
             </div>
@@ -22,39 +21,33 @@
           <!-- 数据图表模块身体   开始 -->
           <div class="chart-box-body">
             <div class="chart-lump">
-              <span class="iconfont icon-study"></span>
+              <span class="iconfont  icon-assessment"></span>
               <h1>22</h1>
-              <p>TOTAL SESSIONS</p>
+              <p>{{$t('m.view')}}</p>
               <!-- <div></div> -->
             </div>
             <div class="chart-lump">
               <span class="iconfont icon-certificates"></span>
               <h1>1</h1>
-              <p>TOTAL USERS</p>
-              <!-- <div></div> -->
-            </div>
-            <div class="chart-lump">
-              <span class="iconfont icon-expire"></span>
-              <h1>1</h1>
-              <p>NEW　USERS</p>
+              <p>{{$t('m.click')}}</p>
               <!-- <div></div> -->
             </div>
             <div class="chart-lump">
               <span class="iconfont icon-train"></span>
-              <h1>23.8m</h1>
-              <p>TIME SPENT</p>
+              <h1>1</h1>
+              <p>{{$t('m.users')}}</p>
               <!-- <div></div> -->
             </div>
             <div class="chart-lump">
-              <span class="iconfont icon-assessment"></span>
-              <h1>1.1m</h1>
-              <p>AVG.SESSION DURATION</p>
+              <span class="iconfont icon-ic_access_alarm_48px"></span>
+              <h1>23.8m</h1>
+              <p>{{$t('m.load')}}</p>
               <!-- <div></div> -->
             </div>
             <div class="chart-lump last-lump">
-              <span class="iconfont icon-ic_access_alarm_48px"></span>
-              <h1>240</h1>
-              <p>AVG.REQUESTS RECEIVED</p>
+              <span class="iconfont icon-expire"></span>
+              <h1>1.1m</h1>
+              <p>{{$t('m.avg')}}</p>
               <!-- <div></div> -->
             </div>
           </div>
@@ -63,7 +56,7 @@
         </div>
         <div class="sheet-box">
           <div class="lump first-lump">
-            <h5>TOP PLATFORMS</h5>
+            <h5>{{$t('m.platforms')}}</h5>
             <div class="sheet-chart">
               <div class="sheet-chart-across">
                 <span>100%</span>
@@ -80,7 +73,7 @@
             </div>
           </div>
           <div class="lump">
-            <h5>TOP DEVICES</h5>
+            <h5>{{$t('m.devices')}}</h5>
             <div class="sheet-chart">
               <div class="sheet-chart-across">
                 <p></p>
@@ -94,7 +87,7 @@
             </div>
           </div>
           <div class="lump">
-            <h5>TOP CARRIERS</h5>
+            <h5>{{$t('m.carriers')}}</h5>
             <div class="sheet-chart">
               <div class="sheet-chart-across">
                 <p></p>
@@ -108,7 +101,7 @@
             </div>
           </div>
           <div class="lump">
-            <h5>TOP USERS</h5>
+            <h5>{{$t('m.USERS')}}</h5>
             <div class="sheet-chart">
               <div class="sheet-chart-across">
                 <span>10%</span>
@@ -311,7 +304,19 @@ export default {
         },
         series: [
           {
-            data: [150, 230, 224, 218, 135, 147, 260],
+            data: [160, 530, 224, 518, 135, 447, 260],
+            type: "line",
+          },
+          {
+            data: [240, 430, 324, 418, 235, 347, 360],
+            type: "line",
+          },
+          {
+            data: [320, 330, 424, 418, 335, 247, 460],
+            type: "line",
+          },
+          {
+            data: [400, 230, 524, 218, 435, 147, 560],
             type: "line",
           },
         ],

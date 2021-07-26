@@ -20,11 +20,6 @@ export default {
       default: false,
     },
   },
-  // data() {
-  //     return {
-  //         visibile: false
-  //     }
-  // }
 };
 </script>
 

@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import App from '../App.vue'
 import Home from '../views/Home.vue'
 import Root from '../views/Root.vue'
-import Register from '@/components/Register.vue'
 import Login from '@/components/Login.vue'
 
 
@@ -40,11 +39,6 @@ const routes = [
             component: () => import('../views/Events.vue')
           },
         ]
-      },
-      {
-        path: '/register',
-        name: 'Register',
-        component: () => import('@/components/Register.vue')
       },
       {
         path: '/login',
