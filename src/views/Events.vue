@@ -107,6 +107,8 @@
           line-height: 50px;
           border-bottom-left-radius: 5px;
           border-bottom-right-radius: 5px;
+          border-top: 1px solid #d2d2d2;
+          cursor: pointer;
           p {
             margin-left: 20px;
           }
