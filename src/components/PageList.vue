@@ -1,14 +1,12 @@
 <template>
-  <div class="page" v-if="visibile">
-      <div class="chird">
-          <li><h4>test2</h4></li>
-          <li class="bg-black"><h4>test3</h4></li>
-          <li><h4>test4</h4></li>
-          <li class="bg-black"><h4>test5</h4></li>
-          <li><h4>test6</h4></li>
-          <li class="bg-black"><h4>test7</h4></li>
-          <li><h4>test8</h4></li>
+  <div class="page" v-show="visibile">
+    <div class="chird">
+      <div v-for="(item, index) in list" :key="index" @click="pidClick(item)">
+        <li>
+          <h4>{{ item.Pid }}</h4>
+        </li>
       </div>
+    </div>
   </div>
 </template>
 
@@ -18,6 +16,17 @@ export default {
     visibile: {
       type: Boolean,
       default: false,
+    },
+    list: {
+      type: Array,
+      default: [],
+    },
+  },
+  methods: {
+    pidClick(item) {
+      //全局获取父组件
+      this.$emit("god", item);
+      this.$pid = item.Pid;
     },
   },
 };
@@ -36,20 +45,20 @@ export default {
   border-left: none;
   z-index: 1;
   overflow-y: auto;
-  .chird{
-      height: auto;
-      li{
-          height: 60px;
-          list-style: none;
-          border-bottom: 1px solid #d9d9d9;
-          text-align: center;
-          line-height: 70px;
-          font-size: 16px;
-          cursor: pointer;
-      }
-      .bg-black{
-          background: #ececec;
-      }
+  .chird {
+    height: auto;
+    li {
+      height: 60px;
+      list-style: none;
+      border-bottom: 1px solid #d9d9d9;
+      text-align: center;
+      line-height: 70px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .bg-black {
+      background: #ececec;
+    }
   }
 }
 </style>

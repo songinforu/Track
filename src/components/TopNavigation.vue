@@ -19,17 +19,17 @@
             class="module-right-left"
             @click="handlePageList()"
             :tabIndex="-1"
-            @blur="ifVisibile = false"
+            @blur.self="ifVisibile = true"
           >
             <span class="iconfont icon-wodeshoucang" slot="left"></span>
-            <h4>Index</h4>
+            <h4>{{pidNum}}</h4>
             <span class="iconfont icon-arrow-down little" slot="left"></span>
           </div>
-          <PageList :visibile="ifVisibile" />
+          <PageList :visibile="ifVisibile" :list="list" @god="godChild"/>
         </div>
         <div class="module-right-right">
-          <div  @click="changeLangEvent()" class="link-box">
-            <span>{{$t('m.language')}}</span>
+          <div @click="changeLangEvent()" class="link-box">
+            <span>{{ $t("m.language") }}</span>
           </div>
           <router-link to="/login">
             <span class="iconfont icon-yaoqingzhuli"></span>
@@ -55,13 +55,15 @@ export default {
       //属性
       value: true,
       ifVisibile: false,
-      lang: 'en-US',
+      lang: "en-US",
+      list:[],
+      pidNum:'',
     };
   },
   //方法
   methods: {
     handlePageList() {
-      this.ifVisibile = !this.ifVisibile;
+      this.ifVisibile = true;
     },
     changeLangEvent() {
       this.$confirm("确定切换语言吗?", "提示", {
@@ -84,6 +86,32 @@ export default {
           });
         });
     },
+    //从子组件接收
+    godChild(item){
+      this.ifVisibile = false,
+      console.log(item)
+      this.pidNum = item.Pid
+    }
+  },
+  mounted() {
+    this.$api
+      .get("/page/get", {
+        params: {
+          PUid: "system",
+        },
+      })
+      .then((res) => {
+        // console.log(res);
+        console.log(res.data.data)
+        if (res.status != 200) return;
+        this.list = res.data.data;
+        //获取默认为数组的第0项
+        this.pidNum = this.list[0].Pid;
+        this.$pid = this.pidNum
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
 };
 </script>

@@ -13,6 +13,16 @@ import router from './router'
 // import './style/iconfont/iconfont.css'
 import './style/index.css'
 
+import axios from 'axios'
+// 初始化
+const api = axios.create({
+  baseURL:'http://api.ka1024.com/track'
+})
+//全局注册，使用方法为:this.$axios
+Vue.prototype.$api = api
+// 原型链
+Vue.prototype.$pid = ''
+
 Vue.config.productionTip = false
 //使用ElementUI
 Vue.use(ElementUI);

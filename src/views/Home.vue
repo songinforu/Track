@@ -40,7 +40,7 @@
             </div>
             <div class="chart-lump">
               <span class="iconfont icon-ic_access_alarm_48px"></span>
-              <h1>23.8m</h1>
+              <h1>{{times}}m</h1>
               <p>{{$t('m.load')}}</p>
               <!-- <div></div> -->
             </div>
@@ -124,6 +124,96 @@
   </div>
 </template>
 
+
+
+
+<script>
+export default {
+  data() {
+
+    return {
+      value: true,
+      pickerOptions: {
+        shortcuts: [
+          {
+            text: "今天",
+            onClick(picker) {
+              picker.$emit("pick", new Date());
+            },
+          },
+          {
+            text: "昨天",
+            onClick(picker) {
+              const date = new Date();
+              date.setTime(date.getTime() - 3600 * 1000 * 24);
+              picker.$emit("pick", date);
+            },
+          },
+          {
+            text: "一周前",
+            onClick(picker) {
+              const date = new Date();
+              date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+              picker.$emit("pick", date);
+            },
+          },
+        ],
+      },
+      value3: "",
+      times: ''
+    };
+  },
+  //生命周期 挂载后
+  mounted() {
+    this.initEcharts()
+    this.$api
+    .get("/timer/get",{
+      params:{
+        PUid: "system",
+        Pid: "one"
+      },
+    }).then((res)=>{
+      console.log(res)
+      }).catch((err)=>{
+        console.log(err)       
+    })
+  },
+  methods: {
+    //引入echarts
+    initEcharts() {
+      const echartsBox = this.$refs.chart_main;
+      const myChat = this.$echarts.init(echartsBox);
+      myChat.setOption({
+        xAxis: {
+          type: "category",
+          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            data: [160, 530, 224, 518, 135, 447, 260],
+            type: "line",
+          },
+          {
+            data: [240, 430, 324, 418, 235, 347, 360],
+            type: "line",
+          },
+          {
+            data: [320, 330, 424, 418, 335, 247, 460],
+            type: "line",
+          },
+          {
+            data: [400, 230, 524, 218, 435, 147, 560],
+            type: "line",
+          },
+        ],
+      });
+    },
+  },
+};
+</script>
 
 <style lang="scss" scoped>
 // scoped 防止类名重复 只在当前文件下起作用
@@ -250,78 +340,3 @@
   }
 }
 </style>
-
-<script>
-export default {
-  data() {
-    return {
-      value: true,
-      pickerOptions: {
-        shortcuts: [
-          {
-            text: "今天",
-            onClick(picker) {
-              picker.$emit("pick", new Date());
-            },
-          },
-          {
-            text: "昨天",
-            onClick(picker) {
-              const date = new Date();
-              date.setTime(date.getTime() - 3600 * 1000 * 24);
-              picker.$emit("pick", date);
-            },
-          },
-          {
-            text: "一周前",
-            onClick(picker) {
-              const date = new Date();
-              date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
-              picker.$emit("pick", date);
-            },
-          },
-        ],
-      },
-      value3: "",
-    };
-  },
-  //生命周期 挂载后
-  mounted() {
-    this.initEcharts()
-  },
-  methods: {
-    //引入echarts
-    initEcharts() {
-      const echartsBox = this.$refs.chart_main;
-      const myChat = this.$echarts.init(echartsBox);
-      myChat.setOption({
-        xAxis: {
-          type: "category",
-          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-        },
-        yAxis: {
-          type: "value",
-        },
-        series: [
-          {
-            data: [160, 530, 224, 518, 135, 447, 260],
-            type: "line",
-          },
-          {
-            data: [240, 430, 324, 418, 235, 347, 360],
-            type: "line",
-          },
-          {
-            data: [320, 330, 424, 418, 335, 247, 460],
-            type: "line",
-          },
-          {
-            data: [400, 230, 524, 218, 435, 147, 560],
-            type: "line",
-          },
-        ],
-      });
-    },
-  },
-};
-</script>
